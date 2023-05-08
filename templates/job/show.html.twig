@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} - Edit{% endblock %}
+{% block titre %} {{parent()|upper  }}- consultation de {{ job.getType() }} {% endblock %}
+{% block body %}
+<h1>entreprise {{ job.getCompany() }}</h1><br>
+<h1>{{ job.getDescription() }}</h1><h2>date d'expiration: {{ job.getExpiresAt()|date('d-m-Y') }}</h2>
+<h2> Image</h2>
+   <img src="{{ publicPath ~ job.image }}">
+<h2>Candidatures</h2>
+        {% for candidature in listeCandidatures %}
+        <h4>Candidat</h4><br>
+            <ul class="nav nav-pills nav-stacked">
+            <li>{{ candidature.candidat }}</li>
+            <li>{{ candidature.contenu }}</li>
+            <li>{{ candidature.dateC | date('d-m-Y') }}</li>
+        </ul>
+        {% endfor %}
+{% endblock %}
